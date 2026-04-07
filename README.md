@@ -8,9 +8,9 @@
 
 Agriculture is the backbone of Malawi's economy, employing the majority of the population and accounting for a significant share of GDP. Yet farmers, extension officers, and policymakers consistently face the same challenge: deciding what to grow, and when, without reliable forward-looking data.
 
-Historically, crop planning in Malawi has leaned heavily on historical averages and institutional knowledge — approaches that are increasingly unreliable in the face of shifting rainfall patterns, rising temperatures, and erratic growing seasons. When a farmer plants the wrong crop for the conditions that actually materialise, the consequences are not merely economic. They are food security crises at the household and national level.
+Historically, crop planning in Malawi has leaned heavily on historical averages and institutional knowledge approaches that are increasingly unreliable in the face of shifting rainfall patterns, rising temperatures, and erratic growing seasons. When a farmer plants the wrong crop for the conditions that actually materialise, the consequences are not merely economic. They are food security crises at the household and national level.
 
-This project directly addresses that gap. Rather than describing what conditions _were_, it asks: **what are conditions likely to be — and which crops will thrive under them?**
+This project directly addresses that gap. Rather than describing what conditions _were_, it asks: **what are conditions likely to be and which crops will thrive under them?**
 
 ---
 
@@ -22,19 +22,19 @@ At its core, this project builds a **data-driven crop suitability prediction pip
 
 Using SARIMA (Seasonal AutoRegressive Integrated Moving Average) models, the system analyses historical time series data for three critical agricultural indicators:
 
-- **NDVI** (Normalised Difference Vegetation Index) — a satellite-derived measure of vegetation health and greenness
-- **LST** (Land Surface Temperature) — surface thermal conditions that affect crop stress and growth
-- **Rainfall** — precipitation levels that determine irrigation need and water availability
+- **NDVI** (Normalised Difference Vegetation Index) - a satellite-derived measure of vegetation health and greenness
+- **LST** (Land Surface Temperature) - surface thermal conditions that affect crop stress and growth
+- **Rainfall** - precipitation levels that determine irrigation need and water availability
 
 SARIMA is particularly well-suited here because these indicators follow strong seasonal cycles. The model learns those cycles from historical data and projects them forward in time.
 
 **2. Synthesising a Composite Forecast**
 
-Once each indicator is forecast independently, their predicted values are averaged into a composite environmental score — a single, interpretable signal representing the expected growing conditions for a given period and location.
+Once each indicator is forecast independently, their predicted values are averaged into a composite environmental score; a single, interpretable signal representing the expected growing conditions for a given period and location.
 
 **3. Measuring Against FAO Crop Thresholds**
 
-The composite forecast is then evaluated against **FAO (Food and Agriculture Organization) crop suitability thresholds** — scientifically established ranges of temperature, moisture, and vegetation conditions under which specific crops are known to perform well. This comparison produces a suitability assessment: for each crop in the model, the system determines whether forecasted conditions are likely to support viable growth.
+The composite forecast is then evaluated against **FAO (Food and Agriculture Organization) crop suitability thresholds** scientifically established ranges of temperature, moisture, and vegetation conditions under which specific crops are known to perform well. This comparison produces a suitability assessment: for each crop in the model, the system determines whether forecasted conditions are likely to support viable growth.
 
 The result answers a practical question: _given what conditions are expected to look like, which crops are most suitable to plant?_
 
@@ -42,11 +42,11 @@ The result answers a practical question: _given what conditions are expected to 
 
 ## Why It Matters
 
-**For farmers and extension officers**, this system provides forward-looking, evidence-based guidance at the start of a planting season — moving beyond gut feel and generalised advice.
+**For farmers and extension officers**, this system provides forward-looking, evidence-based guidance at the start of a planting season moving beyond gut feel and generalised advice.
 
 **For researchers and policymakers**, it demonstrates a reproducible, scalable methodology for integrating remote sensing data, time series forecasting, and international agronomic standards into a deployable decision-support tool.
 
-**For Malawi specifically**, the approach is calibrated to local conditions. The thresholds, the datasets, and the environmental indicators selected all reflect the realities of Malawian agriculture — its dominant crops, its seasonal calendar, and its climate vulnerabilities.
+**For Malawi specifically**, the approach is calibrated to local conditions. The thresholds, the datasets, and the environmental indicators selected all reflect the realities of Malawian agriculture and its dominant crops, its seasonal calendar, and its climate vulnerabilities.
 
 ---
 
@@ -86,7 +86,7 @@ Crop_Prediction_System_With_Time_Series/
 
 ---
 
-### `Datasets/` — The Raw Material
+### `Datasets/` - The Raw Material
 
 **Start here to understand the inputs.**
 
@@ -100,7 +100,7 @@ This folder is divided into three subfolders that reflect the data lifecycle:
 
 ---
 
-### `Notebooks/` — The Data Preparation Pipeline
+### `Notebooks/` - The Data Preparation Pipeline
 
 **Follow these notebooks in order.**
 
@@ -117,7 +117,7 @@ This folder contains four Jupyter notebooks that take the data from raw to ready
 
 ---
 
-### `Flask_Application_and_Notebook/` — The Prediction Engine
+### `Flask_Application_and_Notebook/` - The Prediction Engine
 
 **This is where the system comes to life.**
 
@@ -137,7 +137,7 @@ This folder contains both the deployed web application and the companion noteboo
 
 #### Companion Notebook
 
-`malawi_pipeline_walkthrough.ipynb` — Runs the full pipeline end-to-end in a step-by-step, annotated format: SARIMA modelling for NDVI, LST, and rainfall; composite forecast generation; and FAO threshold evaluation. If you want to understand the modelling methodology in detail, or adapt it for a different region or set of crops, this notebook is the authoritative reference.
+`malawi_pipeline_walkthrough.ipynb` - Runs the full pipeline end-to-end in a step-by-step, annotated format: SARIMA modelling for NDVI, LST, and rainfall; composite forecast generation; and FAO threshold evaluation. If you want to understand the modelling methodology in detail, or adapt it for a different region or set of crops, this notebook is the authoritative reference.
 
 #### Running the Application Locally
 
@@ -151,13 +151,13 @@ The app will be accessible in your browser at `http://localhost:5000`.
 
 ---
 
-### `Report/` — The Full Academic Write-Up
+### `Report/` - The Full Academic Write-Up
 
 Contains the project report covering research background, methodology, results, and discussion — including literature review, model evaluation, and interpretation of findings. This is the authoritative reference for the academic and theoretical context of the system.
 
 ---
 
-### `PowerPoint/` — High-Level Visual Summary
+### `PowerPoint/` - High-Level Visual Summary
 
 Contains the presentation slides for the project. A useful entry point if you want a concise overview before engaging with the technical materials.
 
