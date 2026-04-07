@@ -1,4 +1,4 @@
-# 🌾 Crop Prediction System with Time Series Analysis
+# Crop Prediction System with Time Series Analysis
 
 ### Forecasting Crop Suitability in Malawi Using SARIMA and FAO Thresholds
 
@@ -79,12 +79,14 @@ Crop_Prediction_System_With_Time_Series/
 │   └── models/
 │
 ├── Report/
-└── PowerPoint/
+├── PowerPoint/
+└── requitements.txt
+
 ```
 
 ---
 
-### 📁 `Datasets/` — The Raw Material
+### `Datasets/` — The Raw Material
 
 **Start here to understand the inputs.**
 
@@ -98,7 +100,7 @@ This folder is divided into three subfolders that reflect the data lifecycle:
 
 ---
 
-### 📓 `Notebooks/` — The Data Preparation Pipeline
+### `Notebooks/` — The Data Preparation Pipeline
 
 **Follow these notebooks in order.**
 
@@ -115,7 +117,7 @@ This folder contains four Jupyter notebooks that take the data from raw to ready
 
 ---
 
-### 🚀 `Flask_Application_and_Notebook/` — The Prediction Engine
+### `Flask_Application_and_Notebook/` — The Prediction Engine
 
 **This is where the system comes to life.**
 
@@ -149,13 +151,13 @@ The app will be accessible in your browser at `http://localhost:5000`.
 
 ---
 
-### 📄 `Report/` — The Full Academic Write-Up
+### `Report/` — The Full Academic Write-Up
 
 Contains the project report covering research background, methodology, results, and discussion — including literature review, model evaluation, and interpretation of findings. This is the authoritative reference for the academic and theoretical context of the system.
 
 ---
 
-### 📊 `PowerPoint/` — High-Level Visual Summary
+### `PowerPoint/` — High-Level Visual Summary
 
 Contains the presentation slides for the project. A useful entry point if you want a concise overview before engaging with the technical materials.
 
