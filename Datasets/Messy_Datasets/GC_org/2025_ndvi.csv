@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description"
+          content="A web-based platform that combines remote sensing data and machine learning techniques for informed decision-making in African food production systems."/>
+    <meta name="keyword"
+          content="aagwa akademiya akademiya2063 agriculture remote sensing"/>
+
+    <!--  Title -->
+    <title>AAgWa - Data platform</title>
+
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="https://www.aagwa.org/customized-aagwa/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="https://www.aagwa.org/customized-aagwa/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="https://www.aagwa.org/customized-aagwa/assets/img/favicon-16x16.png">
+
+    <!-- custom styles (optional) -->
+    <link href="https://www.aagwa.org/customized-aagwa/assets/css/plugins.css" rel="stylesheet"/>
+    <link href="https://www.aagwa.org/customized-aagwa/assets/css/style.css" rel="stylesheet"/>
+    <style>
+        .main-nav {
+            display: none;
+        }
+
+        @media (min-width: 801px) {
+
+            .main-nav {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                column-gap: 200px;
+                background-color: #000;
+                color: #fff;
+                padding: 5px 0;
+            }
+
+            .main-nav img {
+                width: 185px;
+                height: 80px;
+            }
+
+            .main-nav ul {
+                display: flex;
+                justify-content: space-between;
+                column-gap: 50px;
+                font-size: 18px;
+            }
+
+            .main-nav a {
+                font-weight: 600;
+            }
+
+            .push {
+                margin-left: auto;
+            }
+
+            .dsn-nav-bar {
+                display: none;
+            }
+            .form-control {
+                min-height: 0 !important;
+            }
+
+
+
+        }
+
+        #wrapper > nav > button{
+            display:none;
+        }
+
+        #wrapper{
+            margin: 50px 0 !important;
+            padding: 0 50px !important;
+        }
+    </style>
+</head>
+<body class="v-light hamburger-menu dsn-effect-scroll dsn-ajax" data-dsn-mousemove="true">
+<div data-dsn-temp="light"></div>
+
+<div class="preloader">
+    <div class="preloader-after"></div>
+    <div class="preloader-before"></div>
+    <div class="preloader-block">
+        <div class="title"><img class="light-logo" src="https://www.aagwa.org/customized-aagwa/assets/img/logo.png"
+                                alt="" width="200" height="150"/></div>
+        <div class="percent">0</div>
+        <div class="loading">loading...</div>
+    </div>
+    <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+    </div>
+</div>
+
+<!-- Nav Bar -->
+<div class="dsn-nav-bar">
+    <div class="site-header">
+        <div class="extend-container">
+            <div class="inner-header">
+                <div class="main-logo">
+                    <a href="index.php">
+                        <img class="dark-logo" src="https://www.aagwa.org/customized-aagwa/assets/img/logo-dark.png"
+                             alt="Logo AAgWa"/>
+                        <img class="light-logo" id="light-logo"
+                             src="https://www.aagwa.org/customized-aagwa/assets/img/logo.png" alt="Logo AAgWa"/>
+                    </a>
+                </div>
+            </div>
+            <nav class=" accent-menu main-navigation">
+                <ul class="extend-container">
+
+                   <!--  <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="research.php">Research</a></li>
+                    <li><a href="data-platform.php">Data</a></li> -->
+
+                    <li><a href="https://www.aagwa.org/Malawi">Home</a></li>
+                    <li><a href="https://www.aagwa.org/Malawi/about">About</a></li>
+                    <li><a href="https://www.aagwa.org/Malawi/food-production">Food production</a></li>
+                    <li><a href="https://www.aagwa.org/Malawi/climate">Climate</a></li>
+                    <li><a href="https://www.aagwa.org/Malawi/publications">Publications</a></li>
+                    <li><a href="https://www.aagwa.org/Malawi/data?p=Malawi">Data</a></li>
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    <div class="header-top header-top-hamburger" style="color: #000;">
+        <div class="header-container">
+            <div class="logo main-logo">
+                <a href="index.php">
+                    <img class="dark-logo" src="https://www.aagwa.org/customized-aagwa/assets/img/logo-dark.png"
+                         alt="Logo AAgWa"/>
+                    <img class="light-logo" src="https://www.aagwa.org/customized-aagwa/assets/img/logo.png"
+                         alt="Logo AAgWa"/>
+                </a>
+            </div>
+
+            <div class="menu-icon" data-dsn="parallax" data-dsn-move="5">
+                <div class="icon-m">
+                    <i class="menu-icon-close fas fa-times"></i>
+                    <span class="menu-icon__line menu-icon__line-left"></span>
+                    <span class="menu-icon__line"></span>
+                    <span class="menu-icon__line menu-icon__line-right"></span>
+                </div>
+
+                <div class="text-menu">
+                    <div class="text-button">Menu</div>
+                    <div class="text-open">Open</div>
+                    <div class="text-close">Close</div>
+                </div>
+            </div>
+
+            <div class="nav">
+                <div class="inner">
+                    <div class="nav__content">
+
+                    </div>
+                </div>
+            </div>
+            <div class="nav-content">
+                <div class="inner-content">
+                    <address class="v-middle">
+                        <span><strong>T</strong>: <a href="tel:+250788318315">+250 788 318 315</a></span>
+                        <span><strong>E</strong>: <a class="link-hover"
+                                                     data-hover-text="info@aagwa.org" href="mailto:info@aagwa.org"
+                                                     style="text-transform: none; margin-bottom:10px;">info@aagwa.org</a></span>
+                        <span>Kicukiro/Niboye KK 341 St 22,</span>
+                        <span>P.O. box 1855</span>
+                        <span>Kigali, Rwanda</span>
+                    </address>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Nav Bar -->
+
+<div class="main-nav">
+    <a href="index.php">
+        <img class="dark-logo" src="https://www.aagwa.org/customized-aagwa/assets/img/logo.png" alt=""/>
+    </a>
+    <ul style="color: #fff !important;">
+        <!-- <li><a href="index.php"  style="color: #fff !important;">Home</a></li>
+        <li><a href="about.php"  style="color: #fff !important;">About</a></li>
+        <li><a href="dashboard.php"  style="color: #fff !important;">Dashboard</a></li>
+        <li><a href="research.php"  style="color: #fff !important;">Research</a></li>
+        <li><a href="data-platform.php"  style="color: #fff !important;">Data</a></li> -->
+
+        <li><a href="https://www.aagwa.org/Malawi" style="color: white;">Home</a></li>
+        <li><a href="https://www.aagwa.org/Malawi/about" style="color: white;">About</a></li>
+        <li><a href="https://www.aagwa.org/Malawi/food-production" style="color: white;">Food production</a></li>
+        <li><a href="https://www.aagwa.org/Malawi/climate" style="color: white;">Climate</a></li>
+        <li><a href="https://www.aagwa.org/Malawi/publications" style="color: white;">Publications</a></li>
+        <li><a href="https://www.aagwa.org/Malawi/data?p=Malawi" style="color: white;">Data</a></li>
+    </ul>
+</div>
+</body>
+</html>
+
+"NAME_0","NAME_1","NAME_2","ID_2","Mean_NDVI_2025.01.01","Mean_NDVI_2025.01.17","Mean_NDVI_2025.02.02","Mean_NDVI_2025.02.18"
+"Malawi","Balaka","Balaka Town","MWI.1.1_1","0.4698363636363636","0.6168818181818182","0.6135545454545456","0.6368"
+"Malawi","Balaka","TA Kalembo","MWI.1.2_1","0.532925615212528","0.6196807606263982","0.6952752796420583","0.6745530201342281"
+"Malawi","Balaka","TA Nsamala","MWI.1.3_1","0.5621317689530686","0.6693415764139591","0.7392171480144405","0.7499648014440433"
+"Malawi","Blantyre","Blantyre City","MWI.2.1_1","0.5117816254416961","0.5676197879858658","0.6431084805653711","0.6449674911660778"
+"Malawi","Blantyre","TA Chigaru","MWI.2.2_1","0.5260567656765677","0.6423092409240925","0.7003848184818482","0.7541557755775579"
+"Malawi","Blantyre","TA Kapeni","MWI.2.3_1","0.591104296875","0.639962109375","0.7177820312500001","0.72265234375"
+"Malawi","Blantyre","TA Kuntaja","MWI.2.4_1","0.6370681159420291","0.6592248792270532","0.7424545893719807","0.756268115942029"
+"Malawi","Blantyre","TA Kunthembwe","MWI.2.5_1","0.5027138240574507","0.6297240574506283","0.7297892280071814","0.7617500897666069"
+"Malawi","Blantyre","TA Lundu","MWI.2.6_1","0.5074240740740741","0.6439753086419754","0.6737444444444445","0.7240635802469136"
+"Malawi","Blantyre","TA Machinjili","MWI.2.7_1","0.49571279069767443","0.7136372093023257","0.7552674418604651","0.754446511627907"
+"Malawi","Blantyre","TA Makata","MWI.2.8_1","0.5318746666666667","0.6726920000000001","0.7460453333333333","0.746132"
+"Malawi","Blantyre","TA Somba","MWI.2.9_1","0.6878196078431372","0.6835133986928105","0.766425816993464","0.7478692810457517"
+"Malawi","Chikwawa","Chikwawa Boma","MWI.3.1_1","0.48868000000000006","0.57703","0.61794","0.63873"
+"Malawi","Chikwawa","Lengwe National Park","MWI.3.2_1","0.6236756161971831","0.6981392605633804","0.7628209507042254","0.770706338028169"
+"Malawi","Chikwawa","Majete Game Reserve - Chikwawa","MWI.3.3_1","0.6974073529411765","0.7400588235294119","0.8141276960784314","0.8129865196078432"
+"Malawi","Chikwawa","Ngabu Urban","MWI.3.4_1","0.346325","0.47873750000000004","0.5862375000000001","0.6176875000000001"
+"Malawi","Chikwawa","TA Chapananga","MWI.3.5_1","0.5720729315628192","0.6394467824310521","0.6955468845760981","0.7272494382022472"
+"Malawi","Chikwawa","TA Kasisi","MWI.3.6_1","0.5730538975501114","0.6601347438752785","0.735455456570156","0.743936302895323"
+"Malawi","Chikwawa","TA Katunga","MWI.3.7_1","0.5221606217616581","0.5977264248704663","0.665520207253886","0.7047321243523317"
+"Malawi","Chikwawa","TA Lundu","MWI.3.8_1","0.6587871900826446","0.6689012396694215","0.7291450413223141","0.7302739669421487"
+"Malawi","Chikwawa","TA Makhwira","MWI.3.9_1","0.6742054867256638","0.66414","0.7036582300884956","0.7262911504424779"
+"Malawi","Chikwawa","TA Maseya","MWI.3.10_1","0.5742364161849711","0.6367416184971099","0.6978057803468208","0.7171271676300579"
+"Malawi","Chikwawa","TA Ngabu","MWI.3.11_1","0.4063573405073021","0.5017441967717141","0.6169205226748655","0.6393351268255189"
+"Malawi","Chiradzulu","Chiradzulu Boma","MWI.4.1_1","0.2635","0.6349","0.77498","0.7700600000000001"
+"Malawi","Chiradzulu","TA Chitera","MWI.4.2_1","0.5127712328767123","0.6390643835616439","0.7492589041095891","0.7670068493150686"
+"Malawi","Chiradzulu","TA Kadewere","MWI.4.3_1","0.4705337301587301","0.5836111111111112","0.6915123015873016","0.7424563492063493"
+"Malawi","Chiradzulu","TA Likoswe","MWI.4.4_1","0.5758044117647059","0.6292948529411765","0.7439720588235295","0.7368669117647059"
+"Malawi","Chiradzulu","TA Mpama","MWI.4.5_1","0.5064653409090909","0.5623977272727273","0.7429198863636365","0.766225"
+"Malawi","Chiradzulu","TA Nchema","MWI.4.6_1","0.5165730434782608","0.6112104347826087","0.6832391304347827","0.775964347826087"
+"Malawi","Chiradzulu","TA Nkalo","MWI.4.7_1","0.41595597484276736","0.6022911949685535","0.6785572327044025","0.7486427672955975"
+"Malawi","Chitipa","Chitipa Boma","MWI.5.1_1","0.40242500000000003","0.5434875","0.5577500000000001","0.5801875000000001"
+"Malawi","Chitipa","Nyika N.P. - Chitipa","MWI.5.2_1","0.770142496847415","0.46877856242118543","0.7761824716267339","0.779468474148802"
+"Malawi","Chitipa","TA Kameme","MWI.5.3_1","0.6252718309859155","0.5759529175050302","0.701661971830986","0.7067012072434609"
+"Malawi","Chitipa","TA Mwabulambya","MWI.5.4_1","0.568033061594203","0.515596195652174","0.6915837862318841","0.7024798913043478"
+"Malawi","Chitipa","TA Mwenemisuku","MWI.5.5_1","0.6412638852672751","0.5101247718383312","0.6942440677966102","0.7638591916558019"
+"Malawi","Chitipa","TA Mwenewenya","MWI.5.6_1","0.6914718998862344","0.5621273037542662","0.7478195676905575","0.7571188850967008"
+"Malawi","Chitipa","TA Nthalire","MWI.5.7_1","0.6700208044382802","0.6459133148404994","0.7470485436893204","0.7526697642163662"
+"Malawi","Dedza","Dedza Boma","MWI.6.1_1","0.47016250000000004","0.35957916666666667","0.6473208333333333","0.67435"
+"Malawi","Dedza","Lake Malawi","MWI.6.2_1","0.0015582991202346041","0.011309506833036246","0.05131029962546817","0.037289467455621304"
+"Malawi","Dedza","SC Chauma","MWI.6.3_1","0.3432759036144578","0.5503084337349398","0.6605469879518072","0.7532337349397591"
+"Malawi","Dedza","SC Chilikumwendo","MWI.6.4_1","0.45170753424657534","0.592943493150685","0.7300828767123287","0.7009777397260274"
+"Malawi","Dedza","SC Kamenya Gwaza","MWI.6.5_1","0.3021982978723404","0.3341348936170213","0.7453025531914894","0.7375970212765958"
+"Malawi","Dedza","TA Kachindamoto","MWI.6.6_1","0.2048391304347826","0.2884205314009662","0.7324944444444444","0.7118807971014494"
+"Malawi","Dedza","TA Kaphuka","MWI.6.7_1","0.5251139726027397","0.42694095890410966","0.7438097260273974","0.765845890410959"
+"Malawi","Dedza","TA Kasumbu","MWI.6.8_1","0.2197057971014493","0.3547149275362319","0.7270897101449276","0.7554792753623188"
+"Malawi","Dedza","TA Pemba","MWI.6.9_1","0.38896020833333333","0.4896108333333334","0.7529417708333334","0.7239301041666667"
+"Malawi","Dedza","TA Tambala","MWI.6.10_1","0.11081333333333335","0.5308198245614035","0.6597287719298246","0.7672112280701755"
+"Malawi","Dowa","Dowa Boma","MWI.7.1_1","0.08207142857142857","0.5178714285714285","0.6352428571428572","0.4995"
+"Malawi","Dowa","Mponela Urban","MWI.7.2_1","0.3075083333333334","0.48371666666666674","0.6335666666666667","0.6627333333333333"
+"Malawi","Dowa","SC Chakhaza","MWI.7.3_1","0.2596419724770642","0.5029491972477065","0.628590252293578","0.6222982798165139"
+"Malawi","Dowa","SC Kayembe","MWI.7.4_1","0.29894867924528307","0.48660641509433966","0.6027803773584905","0.61423"
+"Malawi","Dowa","SC Mkukula","MWI.7.5_1","0.28592152173913044","0.49600347826086955","0.6058297826086957","0.6524963043478261"
+"Malawi","Dowa","SC Mponela","MWI.7.6_1","0.3368267015706807","0.5461748691099477","0.6876397905759163","0.6628921465968587"
+"Malawi","Dowa","TA Chiwere","MWI.7.7_1","0.11522642405063291","0.4268818037974684","0.5340204113924051","0.733307753164557"
+"Malawi","Dowa","TA Dzoole","MWI.7.8_1","0.28413533487297926","0.5105036951501155","0.6455018475750578","0.6054122401847575"
+"Malawi","Dowa","TA Msakambewa","MWI.7.9_1","0.17524293785310735","0.4812892655367232","0.64880131826742","0.6575500941619585"
+"Malawi","Karonga","Karonga Town","MWI.8.1_1","0.43422352941176473","0.4326274509803921","0.5210196078431373","0.5653274509803922"
+"Malawi","Karonga","Lake Malawi","MWI.8.2_1","0.09593876956680016","0.08028789873417722","0.15597574782279439","0.08949217273954116"
+"Malawi","Karonga","Nyipa N. P. - Karonga","MWI.8.3_1","0.6834854967948718","0.47588605769230774","0.764229967948718","0.7956992788461539"
+"Malawi","Karonga","SC Mwakaboko","MWI.8.4_1","0.7089767441860465","0.6597176079734219","0.6965382059800664","0.7163850498338871"
+"Malawi","Karonga","SC Mwirang'ombe","MWI.8.5_1","0.5913904522613066","0.5192909547738694","0.6300010050251256","0.655519095477387"
+"Malawi","Karonga","TA Kilupula","MWI.8.6_1","0.6739786458333333","0.49148984375000004","0.6289791666666668","0.6225885416666668"
+"Malawi","Karonga","TA Kyungu","MWI.8.7_1","0.6895948950652298","0.4196967101531481","0.7322999432785026","0.7387982416335792"
+"Malawi","Karonga","TA Wasambo","MWI.8.8_1","0.6537201438848921","0.47321654676258995","0.6303294964028777","0.6506333333333333"
+"Malawi","Kasungu","Kasungu Boma","MWI.9.1_1","0.4705652173913043","0.45949130434782615","0.5458500000000001","0.5681217391304348"
+"Malawi","Kasungu","Kasungu National Park","MWI.9.2_1","0.5591631802120142","0.3258027208480565","0.7018341696113075","0.6566616607773852"
+"Malawi","Kasungu","SC Chilowamatambe","MWI.9.3_1","0.3232303430079156","0.5685730870712401","0.5648493403693932","0.49769841688654354"
+"Malawi","Kasungu","SC Chisikwa","MWI.9.4_1","0.49778461538461544","0.3853634615384615","0.6404653846153846","0.6911538461538462"
+"Malawi","Kasungu","SC Kawamba","MWI.9.5_1","0.33789871299871305","0.5545364221364222","0.6545947232947233","0.5940492921492921"
+"Malawi","Kasungu","SC Lukwa","MWI.9.6_1","0.35080243161094227","0.4635857142857143","0.6607784194528876","0.6536693009118542"
+"Malawi","Kasungu","SC M'nyanja","MWI.9.7_1","0.48019235294117646","0.4002144117647059","0.6021464705882353","0.43392117647058825"
+"Malawi","Kasungu","SC Njombwa","MWI.9.8_1","0.34504375000000004","0.5317765625","0.6484209375000001","0.6595328125000001"
+"Malawi","Kasungu","SC Simlemba","MWI.9.9_1","0.4915096418732783","0.4769286501377411","0.5703911845730028","0.6245738292011019"
+"Malawi","Kasungu","TA Chulu","MWI.9.10_1","0.4678519536903039","0.3193923299565847","0.6098551374819102","0.4362622286541245"
+"Malawi","Kasungu","TA Kaluluma","MWI.9.11_1","0.5086908333333334","0.4717389583333334","0.6314408333333335","0.5953579166666667"
+"Malawi","Kasungu","TA Kaomba","MWI.9.12_1","0.44774836795252226","0.5385961424332344","0.6158166172106825","0.5500727002967359"
+"Malawi","Kasungu","TA Kapelula","MWI.9.13_1","0.3738946291560103","0.4625473145780051","0.6571890025575449","0.7054670076726343"
+"Malawi","Kasungu","TA Mwase","MWI.9.14_1","0.4968733333333334","0.4996693333333334","0.6702364444444445","0.5994368888888889"
+"Malawi","Kasungu","TA Santhe","MWI.9.15_1","0.3878204081632653","0.36607063492063496","0.6258140589569162","0.6630897959183674"
+"Malawi","Kasungu","TA Wimbe","MWI.9.16_1","0.4817261552680222","0.527056561922366","0.5725163585951941","0.5957486136783734"
+"Malawi","Likoma","Lake Malawi","MWI.10.1_1","0.2866818181818182","0.34995909090909094","0.6313545454545455","0.5115636363636364"
+"Malawi","Lilongwe","Lilongwe City","MWI.11.1_1","0.46564468085106386","0.48042611218568665","0.5557533849129593","0.624115087040619"
+"Malawi","Lilongwe","SC Chitekwele","MWI.11.2_1","0.29417678571428574","0.5240051339285715","0.6628258928571429","0.7670140625"
+"Malawi","Lilongwe","SC Mtema","MWI.11.3_1","0.3682232673267327","0.5399940594059406","0.6756074257425744","0.7185787128712872"
+"Malawi","Lilongwe","SC Njewa","MWI.11.4_1","0.5217112","0.5409712000000001","0.6436984000000001","0.7086408000000001"
+"Malawi","Lilongwe","SC Tsabango","MWI.11.5_1","0.45261358024691367","0.4470432098765432","0.6578209876543211","0.6763567901234568"
+"Malawi","Lilongwe","TA Chadza","MWI.11.6_1","0.5701267415730338","0.6102856179775281","0.7184840449438202","0.7219824719101123"
+"Malawi","Lilongwe","TA Chimutu","MWI.11.7_1","0.2598877338877339","0.3874251559251559","0.5543422037422038","0.7161444906444907"
+"Malawi","Lilongwe","TA Chiseka","MWI.11.8_1","0.46557704485488133","0.6319880211081794","0.7141031134564645","0.7151112401055408"
+"Malawi","Lilongwe","TA Chitukula","MWI.11.9_1","0.31575460992907806","0.5154560283687943","0.673936170212766","0.7313382978723405"
+"Malawi","Lilongwe","TA Kabudula","MWI.11.10_1","0.4196852664576803","0.4838677115987461","0.6213423197492164","0.7118208463949843"
+"Malawi","Lilongwe","TA Kalolo","MWI.11.11_1","0.4292814814814815","0.5376976680384088","0.6357322359396433","0.694064609053498"
+"Malawi","Lilongwe","TA Kalumba","MWI.11.12_1","0.6161360655737705","0.596904918032787","0.6650950819672131","0.6877"
+"Malawi","Lilongwe","TA Kalumbu","MWI.11.13_1","0.45990382978723404","0.5547370212765957","0.7130306382978724","0.7405268085106383"
+"Malawi","Lilongwe","TA Khongoni","MWI.11.14_1","0.41856330409356723","0.4594577485380117","0.6266729532163743","0.691353216374269"
+"Malawi","Lilongwe","TA Malili","MWI.11.15_1","0.4760673854447439","0.5390733153638814","0.6630762803234501","0.7332194070080863"
+"Malawi","Lilongwe","TA Mazengera","MWI.11.16_1","0.30735693779904305","0.49605909090909095","0.6861279904306221","0.7441693779904307"
+"Malawi","Machinga","Lake Chilwa","MWI.12.1_1","-0.0935","-0.15502666666666667","-0.07531866666666666","-0.14358225806451613"
+"Malawi","Machinga","Lake Chiuta","MWI.12.2_1","0.6465246575342466","0.6901082191780822","0.757609589041096","0.5887178082191781"
+"Malawi","Machinga","Liwonda National Park","MWI.12.3_1","0.4727789029535865","0.5147666666666667","0.6770350210970465","0.6237559071729958"
+"Malawi","Machinga","Liwonde Town","MWI.12.4_1","0.4473355555555556","0.6169222222222223","0.6535666666666667","0.6524666666666668"
+"Malawi","Machinga","SC Chamba","MWI.12.5_1","0.5522884848484849","0.6728769696969698","0.6833078787878788","0.7270375757575758"
+"Malawi","Machinga","SC Chikweo","MWI.12.6_1","0.4570310945273632","0.6090358208955224","0.6702116915422885","0.6176251243781095"
+"Malawi","Machinga","SC Chiwalo","MWI.12.7_1","0.5749488095238096","0.6725702380952381","0.701377380952381","0.4953869047619048"
+"Malawi","Machinga","SC Mlomba","MWI.12.8_1","0.14411438202247193","0.22336876404494385","0.22322966292134835","0.24616112359550563"
+"Malawi","Machinga","SC Mposa","MWI.12.9_1","0.2370648648648649","0.27866216216216216","0.3324629343629344","0.35521343873517786"
+"Malawi","Machinga","SC Ngokwe","MWI.12.10_1","0.5622260638297872","0.5482813829787234","0.6956212765957448","0.5897744680851065"
+"Malawi","Machinga","SC Sitola","MWI.12.11_1","0.5528959287531807","0.6786595419847329","0.7587493638676845","0.7255262086513996"
+"Malawi","Machinga","TA Kawinga","MWI.12.12_1","0.35190510752688176","0.4612939068100359","0.4715552867383513","0.4424247302158274"
+"Malawi","Machinga","TA Liwonde","MWI.12.13_1","0.5226227871939737","0.6208444444444444","0.7104596986817326","0.6290459510357816"
+"Malawi","Machinga","TA Nyambi","MWI.12.14_1","0.5764793689320389","0.5246405339805825","0.7262429611650486","0.6480815533980583"
+"Malawi","Mangochi","Lake Malawi","MWI.13.1_1","0.04340714039323905","0.08973998618784532","0.14900201484623543","0.1259136787564767"
+"Malawi","Mangochi","Lake Malombe","MWI.13.2_1","0.08558192488262911","0.10190236406619387","0.15526825938566555","0.07410409638554216"
+"Malawi","Mangochi","Mangochi Town","MWI.13.3_1","0.41872","0.4777","0.50824","0.4964666666666667"
+"Malawi","Mangochi","Monkey Bay Urban","MWI.13.4_1","0.25208823529411767","0.5416058823529412","0.7149588235294119","0.6691941176470588"
+"Malawi","Mangochi","SC Chowe","MWI.13.5_1","0.4750478260869565","0.6096852437417656","0.7188245059288538","0.6477471673254283"
+"Malawi","Mangochi","SC Mbwana Nyambi","MWI.13.6_1","0.607756263269639","0.5377022292993631","0.7337843949044587","0.6367607218683652"
+"Malawi","Mangochi","SC Namabvi","MWI.13.7_1","0.4578078431372549","0.5381555555555556","0.7214082788671025","0.7640065359477124"
+"Malawi","Mangochi","TA Chimwala","MWI.13.8_1","0.5261068480300188","0.5697827392120075","0.7322028195488721","0.6904738273921202"
+"Malawi","Mangochi","TA Jalasi","MWI.13.9_1","0.5425297904191617","0.514852245508982","0.7484278443113773","0.7229001497005989"
+"Malawi","Mangochi","TA Katuli","MWI.13.10_1","0.5182720388349515","0.5442720388349516","0.6568792233009709","0.6447590291262136"
+"Malawi","Mangochi","TA Makanjila","MWI.13.11_1","0.3838642607683353","0.26634866123399303","0.7195770663562282","0.716573108265425"
+"Malawi","Mangochi","TA Mponda","MWI.13.12_1","0.33332962542565264","0.46482599318955736","0.7281464245175937","0.7281237230419978"
+"Malawi","Mangochi","TA Nankumba","MWI.13.13_1","0.31143076923076923","0.4955051530993279","0.7594466019417476","0.7596828230022405"
+"Malawi","Mchinji","Mchinji Boma","MWI.14.1_1","0.5260333333333334","0.5096777777777778","0.6246888888888888","0.6478111111111111"
+"Malawi","Mchinji","SC Dambe","MWI.14.2_1","0.40413000000000004","0.3260707843137255","0.6582417647058824","0.7028633333333334"
+"Malawi","Mchinji","SC Mavwere","MWI.14.3_1","0.47568360360360357","0.5551394594594594","0.6590396396396396","0.6836248648648648"
+"Malawi","Mchinji","SC Mduwa","MWI.14.4_1","0.513571888726208","0.5270253294289898","0.6552188872620791","0.7088928257686676"
+"Malawi","Mchinji","TA Mkanda","MWI.14.5_1","0.5319888888888888","0.5641960252935863","0.6718892502258357","0.7025771454381211"
+"Malawi","Mchinji","TA Mlonyeni","MWI.14.6_1","0.5548517915309447","0.5801771986970684","0.7050078175895765","0.7188055374592834"
+"Malawi","Mchinji","TA Zulu","MWI.14.7_1","0.46033267857142857","0.5408360714285715","0.6419483928571429","0.6825776785714286"
+"Malawi","Mulanje","Mulanje Boma","MWI.15.1_1","0.7220125000000001","0.7395812500000001","0.7714562500000001","0.8058875000000001"
+"Malawi","Mulanje","Mulanje Mountain Forest Reserve","MWI.15.2_1","0.6472549828178694","0.5285821305841925","0.6768082474226804","0.6361140893470791"
+"Malawi","Mulanje","SC Juma","MWI.15.3_1","0.310387714987715","0.36943808353808355","0.5588152334152334","0.6863159705159706"
+"Malawi","Mulanje","SC Laston Njema","MWI.15.4_1","0.6914873333333333","0.6445106666666667","0.690674","0.7597153333333334"
+"Malawi","Mulanje","TA Chikumbu","MWI.15.5_1","0.5359752747252747","0.6611373626373627","0.7164945054945056","0.7818796703296704"
+"Malawi","Mulanje","TA Mabuka","MWI.15.6_1","0.6735956701030927","0.6584713402061856","0.7470624742268042","0.8027967010309279"
+"Malawi","Mulanje","TA Nkanda","MWI.15.7_1","0.3498441379310345","0.45861655172413796","0.6029","0.6777452873563219"
+"Malawi","Mulanje","TA Nthiramanja","MWI.15.8_1","0.4271875","0.6341477941176471","0.6345183823529412","0.7563735294117647"
+"Malawi","Mwanza","Majete Game Reserve - Mwanza","MWI.16.1_1","0.5466177142857143","0.6703097142857143","0.7363354285714286","0.7472051428571429"
+"Malawi","Mwanza","Mwanza Boma","MWI.16.2_1","0.5939625000000001","0.6728375","0.70759375","0.7060062500000001"
+"Malawi","Mwanza","TA Kanduku","MWI.16.3_1","0.5228922636103152","0.6171412607449857","0.6945037249283668","0.7114862464183381"
+"Malawi","Mwanza","TA Nthache","MWI.16.4_1","0.6447416909620992","0.6439186588921283","0.7525950437317784","0.7605032069970846"
+"Malawi","Mzimba","Mzimba Boma","MWI.17.1_1","0.41545000000000004","0.12021666666666668","0.5471833333333334","0.5993916666666668"
+"Malawi","Mzimba","Mzuzu City","MWI.17.2_1","0.5397818181818183","0.2775539393939394","0.5888121212121212","0.39962484848484847"
+"Malawi","Mzimba","SC Jaravikuba Munthali","MWI.17.3_1","0.60642","0.44294810810810814","0.6614378378378378","0.697434054054054"
+"Malawi","Mzimba","SC Kampingo Sibande","MWI.17.4_1","0.5919205754141238","0.17821089799476897","0.6655753269398431","0.6163604184829992"
+"Malawi","Mzimba","SC Khosolo Gwaza Jere","MWI.17.5_1","0.5511082069580732","0.42389821587867976","0.5483829616413917","0.5514522747546833"
+"Malawi","Mzimba","TA Chindi","MWI.17.6_1","0.547937977745525","0.41902051282051284","0.6437444605708758","0.47295960328979203"
+"Malawi","Mzimba","TA M'Mbelwa","MWI.17.7_1","0.5334665194996321","0.21995224429727742","0.6166569536423842","0.5763227373068434"
+"Malawi","Mzimba","TA Mabulabo","MWI.17.8_1","0.4924499433748584","0.4468328425821064","0.5928029445073613","0.6087326160815402"
+"Malawi","Mzimba","TA Mpherembe","MWI.17.9_1","0.5157468468468468","0.3694908622908623","0.6527218790218791","0.519007722007722"
+"Malawi","Mzimba","TA Mtwalo","MWI.17.10_1","0.524986205414697","0.33125466265578","0.6485738719381178","0.5667972496776966"
+"Malawi","Mzimba","TA Mzikubola","MWI.17.11_1","0.5602430151338766","0.31780552968568104","0.6742321885913853","0.6739214784633295"
+"Malawi","Mzimba","TA Mzukuzuku","MWI.17.12_1","0.5323233438485805","0.3732466876971609","0.6368867507886435","0.6384895899053628"
+"Malawi","Mzimba","Vwaza Marsh Game Reserve - Mzimba","MWI.17.13_1","0.7433448087431694","0.35176010928961754","0.7697639344262295","0.7062978142076504"
+"Malawi","Neno","Majete Game Reserve - Neno","MWI.18.1_1","0.6529333333333334","0.7459388888888889","0.7979333333333334","0.7864055555555556"
+"Malawi","Neno","TA Dambe","MWI.18.2_1","0.6571305369127518","0.44249093959731545","0.7474926174496644","0.7330348993288591"
+"Malawi","Neno","TA Mlauli","MWI.18.3_1","0.4913164444444445","0.6753423703703704","0.733202962962963","0.7538391111111111"
+"Malawi","Neno","TA Ngozi","MWI.18.4_1","0.5602451127819549","0.5945441102756892","0.7122388471177945","0.7233924812030076"
+"Malawi","Neno","TA Symon","MWI.18.5_1","0.5139020202020202","0.6576674747474748","0.7033420202020202","0.7281539393939395"
+"Malawi","Nkhata Bay","Lake Malawi","MWI.19.1_1","0.11699576856649396","0.0548232528041415","0.1490035198058038","0.10880954491406336"
+"Malawi","Nkhata Bay","SC Fukamalaza","MWI.19.2_1","0.7135157894736843","0.23845789473684215","0.7487228070175439","0.736619298245614"
+"Malawi","Nkhata Bay","SC Malanda","MWI.19.3_1","0.6924935643564357","0.18186039603960397","0.7529940594059407","0.6967480198019802"
+"Malawi","Nkhata Bay","SC Nyaluwanga","MWI.19.4_1","0.6406053846153846","0.23880692307692308","0.7079569230769232","0.6832076923076923"
+"Malawi","Nkhata Bay","SC Zilakoma","MWI.19.5_1","0.4708493006993007","0.21238356643356643","0.7529393356643357","0.7153321678321679"
+"Malawi","Nkhata Bay","TA Fukamapiri","MWI.19.6_1","0.7262167330677292","0.0843792828685259","0.7427294820717132","0.6524804780876494"
+"Malawi","Nkhata Bay","TA Kabunduli","MWI.19.7_1","0.7326676077265974","0.16936339772164438","0.7508497275879149","0.7010199108469539"
+"Malawi","Nkhata Bay","TA Malenga Mzoma","MWI.19.8_1","0.6959408163265306","0.30578163265306124","0.7408632653061225","0.6207938775510204"
+"Malawi","Nkhata Bay","TA Musisya","MWI.19.9_1","0.6544473786407767","0.4300563106796117","0.6663007766990292","0.7153133980582524"
+"Malawi","Nkhata Bay","TA Timbiri","MWI.19.10_1","0.7259278048780488","0.38121853658536586","0.7423334146341464","0.574358536585366"
+"Malawi","Nkhotakota","Lake Malawi","MWI.20.1_1","0.024808553728853943","0.037444380816034364","0.06806387654320989","0.019380185979971386"
+"Malawi","Nkhotakota","Nkhotakota Boma","MWI.20.2_1","0.29056470588235295","0.21872941176470592","0.5458058823529413","0.06611176470588236"
+"Malawi","Nkhotakota","Nkhotakota Game Reserve","MWI.20.3_1","0.5178059124767226","0.5519124767225326","0.6340548882681565","0.7275005586592179"
+"Malawi","Nkhotakota","SC Kafuzila","MWI.20.4_1","0.6358669207317074","0.38614756097560976","0.640996036585366","0.592428506097561"
+"Malawi","Nkhotakota","SC Mphonde","MWI.20.5_1","0.4674867549668874","0.2749907284768212","0.614","0.2652662251655629"
+"Malawi","Nkhotakota","SC Mwansambo","MWI.20.6_1","0.23295034722222221","0.3121013888888889","0.6780277777777778","0.6975666666666668"
+"Malawi","Nkhotakota","TA Kanyenda","MWI.20.7_1","0.4939787204450626","0.3118720445062587","0.653503337969402","0.5461885952712101"
+"Malawi","Nkhotakota","TA Malenga Chanzi","MWI.20.8_1","0.2820937984496124","0.3138485788113695","0.597774677002584","0.41211033591731266"
+"Malawi","Nkhotakota","TA Mwadzama","MWI.20.9_1","0.2573087417218543","0.2875720529801325","0.6532912582781457","0.6747924503311259"
+"Malawi","Nsanje","Mwabvi Game Reserve","MWI.21.1_1","0.5885021739130435","0.666963043478261","0.7594893719806763","0.7015132850241547"
+"Malawi","Nsanje","Nsanje Boma","MWI.21.2_1","0.4496263157894737","0.5184631578947368","0.5770315789473685","0.5973526315789474"
+"Malawi","Nsanje","SC Makoka","MWI.21.3_1","0.5033076923076923","0.5463935897435898","0.6874064102564102","0.6895423076923077"
+"Malawi","Nsanje","SC Mbenje","MWI.21.4_1","0.4508858267716535","0.5437086614173229","0.6356233595800526","0.6454464566929135"
+"Malawi","Nsanje","TA Chimombo","MWI.21.5_1","0.4273906976744186","0.49928372093023254","0.5741302325581396","0.6203697674418606"
+"Malawi","Nsanje","TA Malemia","MWI.21.6_1","0.5531428571428572","0.6013107142857144","0.7305113095238096","0.7003696428571429"
+"Malawi","Nsanje","TA Mlolo","MWI.21.7_1","0.6546181598062955","0.6455200968523003","0.7109058111380145","0.6975639225181598"
+"Malawi","Nsanje","TA Ndamera","MWI.21.8_1","0.4

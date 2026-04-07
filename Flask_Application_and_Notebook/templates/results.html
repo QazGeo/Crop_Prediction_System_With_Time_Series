@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #f8f9fa;">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0">Forecast Summary for {{ summary.region }}</h2>
+                        <div>
+                            <a href="{{ url_for('download_pdf', region_name=summary.region.replace(' ', '_').lower()) }}" 
+                               class="btn btn-light btn-sm me-2">
+                                <i class="fas fa-file-pdf"></i> Download PDF
+                            </a>
+                            <a href="{{ url_for('download_csv', region_name=summary.region.replace(' ', '_').lower()) }}" 
+                               class="btn btn-light btn-sm">
+                                <i class="fas fa-file-csv"></i> Download CSV
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Forecast Statistics</h4>
+                                <p class="text-muted" style="font-size:0.82rem; margin-bottom:8px;">
+                                    All averages below are computed over the <strong>growing season (November–April)</strong> only,
+                                    following FAO EcoCrop methodology which evaluates crop suitability against growing season
+                                    conditions — not full-year averages which are dragged down by dry-season zeros.
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <strong>Avg. Rainfall (growing season):</strong>
+                                        {{ "%.2f"|format(summary.avg_rainfall) }} mm per 16-day period
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Avg. NDVI (growing season):</strong> {{ "%.3f"|format(summary.avg_ndvi) }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Avg. Temperature / LST (growing season):</strong> {{ "%.2f"|format(summary.avg_temp) }} °C
+                                    </li>
+                                </ul>
+
+                                <h4 class="mt-4">Crop Suitability Scores</h4>
+                                <table class="table table-sm table-bordered mt-2">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Crop</th>
+                                            <th>Suitability</th>
+                                            <th>Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for crop, d in summary.crop_suitability %}
+                                        <tr>
+                                            <td>{{ loop.index }}</td>
+                                            <td><strong>{{ crop }}</strong></td>
+                                            <td>
+                                                <div class="progress" style="height:16px;">
+                                                    <div class="progress-bar
+                                                        {% if d.score >= 80 %}bg-success
+                                                        {% elif d.score >= 60 %}bg-primary
+                                                        {% elif d.score >= 40 %}bg-warning
+                                                        {% else %}bg-danger{% endif %}"
+                                                        role="progressbar"
+                                                        style="width: {{ d.score }}%">
+                                                        {{ "%.1f"|format(d.score) }}%
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {% if d.score >= 80 %}
+                                                    <span class="badge bg-success">Highly Suitable</span>
+                                                {% elif d.score >= 60 %}
+                                                    <span class="badge bg-primary">Suitable</span>
+                                                {% elif d.score >= 40 %}
+                                                    <span class="badge bg-warning text-dark">Moderate</span>
+                                                {% elif d.score >= 20 %}
+                                                    <span class="badge bg-danger">Marginal</span>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">Not Suitable</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <h5 class="mt-4">Crop Conditions Reference</h5>
+                                <p class="text-muted" style="font-size:0.8rem; margin-bottom:6px;">
+                                    Each crop performs best within the ranges below. Compare these against the forecasted averages shown at the top of the page to understand the scores.
+                                </p>
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Crop</th>
+                                            <th>Optimal LST (°C)</th>
+                                            <th>Optimal Rainfall (mm/16d, growing season)</th>
+                                            <th>Optimal NDVI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for crop, d in summary.crop_suitability %}
+                                        <tr>
+                                            <td><strong>{{ crop }}</strong></td>
+                                            <td>{{ d.optimal_lst[0] }} – {{ d.optimal_lst[1] }}</td>
+                                            <td>{{ d.optimal_rain[0] }} – {{ d.optimal_rain[1] }}</td>
+                                            <td>{{ d.optimal_ndvi[0] }} – {{ d.optimal_ndvi[1] }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h4>Forecast Visualization</h4>
+                                <img src="{{ url_for('static', filename='images/forecasts/forecast_' + summary.region.replace(' ', '_').lower() + '.png') }}" 
+                                     alt="Forecast Plot" 
+                                     class="img-fluid rounded"
+                                     style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <a href="/selection" class="btn btn-primary">Make Another Forecast</a>
+                            <a href="/" class="btn btn-secondary">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

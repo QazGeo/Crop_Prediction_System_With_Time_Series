@@ -1,0 +1,6 @@
+*/__pycache__/
+*/models/
+.vscode/
+VideoPresentation.mp4
+static
+models

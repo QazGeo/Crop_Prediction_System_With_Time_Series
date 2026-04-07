@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malawi Map - Minimal</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 20px;
+        }
+        
+        #map {
+            height: 600px;
+            width: 100%;
+            background: white;
+        }
+        
+        .title {
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        /* Hide all map controls and attribution */
+        .leaflet-control-container {
+            display: none;
+        }
+        
+        /* Custom white background style */
+        .malawi-region {
+            fill: #4CAF50;
+            stroke: white;
+            stroke-width: 1.5;
+            stroke-linejoin: round;
+        }
+        
+        .malawi-region:hover {
+            fill: #2E7D32;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🇲🇼 Malawi Administrative Regions</h1>
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map with white background
+        var map = L.map('map', {
+            center: [-13.2543, 34.3015],
+            zoom: 6,
+            zoomControl: false,
+            attributionControl: false,
+            dragging: true,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            tap: false
+        });
+
+        // Create a white background layer (no tiles)
+        L.rectangle([[ -40, -40 ], [ 40, 40 ]], {
+            fillColor: 'white',
+            fillOpacity: 1,
+            stroke: false
+        }).addTo(map);
+
+        // Load Malawi JSON data
+        fetch('malawi.json')
+            .then(response => response.json())
+            .then(data => {
+                // Function to style Malawi regions
+                function styleMalawi(feature) {
+                    return {
+                        fillColor: '#4CAF50',
+                        weight: 1.5,
+                        opacity: 1,
+                        color: 'white',
+                        fillOpacity: 0.7
+                    };
+                }
+
+                // Function on hover
+                function highlightFeature(e) {
+                    var layer = e.target;
+                    layer.setStyle({
+                        weight: 3,
+                        color: '#666',
+                        fillOpacity: 0.9
+                    });
+                }
+
+                // Function reset highlight
+                function resetHighlight(e) {
+                    geojsonLayer.resetStyle(e.target);
+                }
+
+                // Function to zoom to feature
+                function zoomToFeature(e) {
+                    map.fitBounds(e.target.getBounds(), {
+                        padding: [20, 20],
+                        maxZoom: 8
+                    });
+                }
+
+                // Add event listeners
+                function onEachFeature(feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature
+                    });
+                }
+
+                // Add GeoJSON to map
+                var geojsonLayer = L.geoJSON(data, {
+                    style: styleMalawi,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+
+                // Fit map to show only Malawi
+                map.fitBounds(geojsonLayer.getBounds(), {
+                    padding: [50, 50],
+                    maxZoom: 8
+                });
+
+                // Disable map interaction outside Malawi
+                map.on('click', function(e) {
+                    if (!geojsonLayer.getBounds().contains(e.latlng)) {
+                        map.fitBounds(geojsonLayer.getBounds(), {
+                            padding: [50, 50],
+                            maxZoom: 8
+                        });
+                    }
+                });
+
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+                
+                // Create a simple Malawi outline as fallback
+                var malawiOutline = L.polygon([
+                    [-9.5, 32.5], [-9.5, 35.5], [-17.5, 35.5], 
+                    [-17.5, 32.5], [-9.5, 32.5]
+                ], {
+                    fillColor: '#4CAF50',
+                    fillOpacity: 0.7,
+                    stroke: false
+                }).addTo(map);
+                
+                map.fitBounds(malawiOutline.getBounds());
+            });
+
+        // Prevent zooming out too far
+        map.setMinZoom(5);
+        map.setMaxZoom(9);
+
+    </script>
+</body>
+</html>
