@@ -1,5 +1,4 @@
 # Crop Prediction System with Time Series Analysis
-
 ### Forecasting Crop Suitability in Malawi Using SARIMA and FAO Thresholds
 
 ---
@@ -10,7 +9,7 @@ Agriculture is the backbone of Malawi's economy, employing the majority of the p
 
 Historically, crop planning in Malawi has leaned heavily on historical averages and institutional knowledge approaches that are increasingly unreliable in the face of shifting rainfall patterns, rising temperatures, and erratic growing seasons. When a farmer plants the wrong crop for the conditions that actually materialise, the consequences are not merely economic. They are food security crises at the household and national level.
 
-This project directly addresses that gap. Rather than describing what conditions _were_, it asks: **what are conditions likely to be and which crops will thrive under them?**
+This project directly addresses that gap. Rather than describing what conditions *were*, it asks: **what are conditions likely to be and which crops will thrive under them?**
 
 ---
 
@@ -36,7 +35,7 @@ Once each indicator is forecast independently, their predicted values are averag
 
 The composite forecast is then evaluated against **FAO (Food and Agriculture Organization) crop suitability thresholds** scientifically established ranges of temperature, moisture, and vegetation conditions under which specific crops are known to perform well. This comparison produces a suitability assessment: for each crop in the model, the system determines whether forecasted conditions are likely to support viable growth.
 
-The result answers a practical question: _given what conditions are expected to look like, which crops are most suitable to plant?_
+The result answers a practical question: *given what conditions are expected to look like, which crops are most suitable to plant?*
 
 ---
 
@@ -46,7 +45,7 @@ The result answers a practical question: _given what conditions are expected to 
 
 **For researchers and policymakers**, it demonstrates a reproducible, scalable methodology for integrating remote sensing data, time series forecasting, and international agronomic standards into a deployable decision-support tool.
 
-**For Malawi specifically**, the approach is calibrated to local conditions. The thresholds, the datasets, and the environmental indicators selected all reflect the realities of Malawian agriculture and its dominant crops, its seasonal calendar, and its climate vulnerabilities.
+**For Malawi specifically**, the approach is calibrated to local conditions. The thresholds, the datasets, and the environmental indicators selected all reflect the realities of Malawian agriculture  its dominant crops, its seasonal calendar, and its climate vulnerabilities.
 
 ---
 
@@ -56,6 +55,10 @@ The repository is organised into five top-level folders. Here is a guide to what
 
 ```
 Crop_Prediction_System_With_Time_Series/
+│
+├── Approvals/
+│   ├── irb_260302-123215-6a6-43.pdf
+│   └── irb_260302-123215-6a6-44.pdf
 │
 ├── Datasets/
 │   ├── Original_Datasets/
@@ -80,44 +83,49 @@ Crop_Prediction_System_With_Time_Series/
 │
 ├── Report/
 ├── PowerPoint/
-└── requitements.txt
-
+└── requirements.txt
 ```
 
 ---
 
-### `Datasets/` - The Raw Material
+### `Approvals/` Ethics & Research Clearance
+
+This folder holds the formal institutional approvals obtained before data collection began. Both documents are included here for full transparency and research integrity.
+
+---
+
+### `Datasets/` The Raw Material
 
 **Start here to understand the inputs.**
 
 This folder is divided into three subfolders that reflect the data lifecycle:
 
-| Subfolder            | Contents                                                                                                                                                                                                       |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Original_Datasets/` | Source data as obtained, before any processing. The raw NDVI, LST, and rainfall time series for Malawi. Start here if you want to understand the data origins or rerun the pipeline from scratch.              |
-| `Messy_Datasets/`    | Intermediate datasets that have been partially combined or restructured but not yet fully cleaned. These represent the state of the data after initial merging and before the cleaning steps in the notebooks. |
-| `Output_Datasets/`   | The final, clean, analysis-ready datasets produced by the preprocessing notebooks. These are the files consumed directly by the SARIMA modelling pipeline and the Flask application.                           |
+| Subfolder | Contents |
+|---|---|
+| `Original_Datasets/` | Source data as obtained, before any processing. The raw NDVI, LST, and rainfall time series for Malawi. Start here if you want to understand the data origins or rerun the pipeline from scratch. |
+| `Messy_Datasets/` | Intermediate datasets that have been partially combined or restructured but not yet fully cleaned. These represent the state of the data after initial merging and before the cleaning steps in the notebooks. |
+| `Output_Datasets/` | The final, clean, analysis-ready datasets produced by the preprocessing notebooks. These are the files consumed directly by the SARIMA modelling pipeline and the Flask application. |
 
 ---
 
-### `Notebooks/` - The Data Preparation Pipeline
+### `Notebooks/` The Data Preparation Pipeline
 
 **Follow these notebooks in order.**
 
 This folder contains four Jupyter notebooks that take the data from raw to ready. They are designed to be run sequentially:
 
-| Step | Notebook                      | What It Does                                                                                                                                                                                                                    |
-| ---- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | `data_merging.ipynb`          | Combines the separate source files (NDVI, LST, rainfall) into unified datasets, aligning them by date and location.                                                                                                             |
-| 2    | `data_cleaning.ipynb`         | Handles inconsistencies, formatting issues, and structural problems in the merged data — column standardisation, type corrections, and general tidying.                                                                         |
-| 3    | `handle_missing_values.ipynb` | Addresses gaps in the time series data. Missing values in satellite and climate records are common due to cloud cover and sensor gaps. This notebook documents and resolves those gaps using appropriate imputation strategies. |
-| 4    | `eda.ipynb`                   | Exploratory Data Analysis. Visualises the time series, examines seasonal patterns, and provides the analytical foundation that informs the SARIMA modelling choices made in the Flask pipeline.                                 |
+| Step | Notebook | What It Does |
+|---|---|---|
+| 1 | `data_merging.ipynb` | Combines the separate source files (NDVI, LST, rainfall) into unified datasets, aligning them by date and location. |
+| 2 | `data_cleaning.ipynb` | Handles inconsistencies, formatting issues, and structural problems in the merged data such as column standardisation, type corrections, and general tidying. |
+| 3 | `handle_missing_values.ipynb` | Addresses gaps in the time series data. Missing values in satellite and climate records are common due to cloud cover and sensor gaps. This notebook documents and resolves those gaps using appropriate imputation strategies. |
+| 4 | `eda.ipynb` | Exploratory Data Analysis. Visualises the time series, examines seasonal patterns, and provides the analytical foundation that informs the SARIMA modelling choices made in the Flask pipeline. |
 
 > The cleaned, processed outputs from these notebooks are saved into `Datasets/Output_Datasets/` and consumed by the application.
 
 ---
 
-### `Flask_Application_and_Notebook/` - The Prediction Engine
+### `Flask_Application_and_Notebook/` The Prediction Engine
 
 **This is where the system comes to life.**
 
@@ -125,19 +133,19 @@ This folder contains both the deployed web application and the companion noteboo
 
 #### Application Files
 
-| File                       | Role                                                                                                                                                                                           |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app.py`                   | The main Flask application entry point. Run this file to launch the web interface locally.                                                                                                     |
-| `models.py`                | The heart of the prediction logic. FAO crop suitability thresholds are defined here, and the averaged SARIMA forecasts are evaluated against those thresholds to produce crop recommendations. |
-| `services.py`              | Supporting service functions that handle data retrieval, processing calls, and the orchestration between the SARIMA forecasting step and the threshold evaluation in `models.py`.              |
-| `combined_with_plants.csv` | The combined dataset used directly by the application, linking environmental time series with crop plant data.                                                                                 |
-| `templates/`               | HTML templates for the web interface front-end.                                                                                                                                                |
-| `static/`                  | Static assets (CSS, JavaScript, images) for the front-end.                                                                                                                                     |
-| `models/`                  | Stored and serialised model artefacts used by the application at runtime.                                                                                                                      |
+| File | Role |
+|---|---|
+| `app.py` | The main Flask application entry point. Run this file to launch the web interface locally. |
+| `models.py` | The heart of the prediction logic. FAO crop suitability thresholds are defined here, and the averaged SARIMA forecasts are evaluated against those thresholds to produce crop recommendations. |
+| `services.py` | Supporting service functions that handle data retrieval, processing calls, and the orchestration between the SARIMA forecasting step and the threshold evaluation in `models.py`. |
+| `combined_with_plants.csv` | The combined dataset used directly by the application, linking environmental time series with crop plant data. |
+| `templates/` | HTML templates for the web interface front-end. |
+| `static/` | Static assets (CSS, JavaScript, images) for the front-end. |
+| `models/` | Stored and serialised model artefacts used by the application at runtime. |
 
 #### Companion Notebook
 
-`malawi_pipeline_walkthrough.ipynb` - Runs the full pipeline end-to-end in a step-by-step, annotated format: SARIMA modelling for NDVI, LST, and rainfall; composite forecast generation; and FAO threshold evaluation. If you want to understand the modelling methodology in detail, or adapt it for a different region or set of crops, this notebook is the authoritative reference.
+`malawi_pipeline_walkthrough.ipynb` : Runs the full pipeline end-to-end in a step-by-step, annotated format: SARIMA modelling for NDVI, LST, and rainfall; composite forecast generation; and FAO threshold evaluation. If you want to understand the modelling methodology in detail, or adapt it for a different region or set of crops, this notebook is the authoritative reference.
 
 #### Running the Application Locally
 
@@ -151,13 +159,13 @@ The app will be accessible in your browser at `http://localhost:5000`.
 
 ---
 
-### `Report/` - The Full Academic Write-Up
+### `Report/` The Full Academic Write-Up
 
-Contains the project report covering research background, methodology, results, and discussion — including literature review, model evaluation, and interpretation of findings. This is the authoritative reference for the academic and theoretical context of the system.
+Contains the project report covering research background, methodology, results, and discussion including literature review, model evaluation, and interpretation of findings. This is the authoritative reference for the academic and theoretical context of the system.
 
 ---
 
-### `PowerPoint/` - High-Level Visual Summary
+### `PowerPoint/` High-Level Visual Summary
 
 Contains the presentation slides for the project. A useful entry point if you want a concise overview before engaging with the technical materials.
 
@@ -165,7 +173,7 @@ Contains the presentation slides for the project. A useful entry point if you wa
 
 ## A Note on `models.py` and the FAO Thresholds
 
-The `models.py` file is the decision layer of this system. It encodes FAO-defined environmental ranges for each supported crop — minimum and maximum acceptable values of temperature, vegetation health, and moisture. When a forecasted composite value falls within a crop's acceptable range, that crop is flagged as suitable for the projected conditions.
+The `models.py` file is the decision layer of this system. It encodes FAO-defined environmental ranges for each supported crop; minimum and maximum acceptable values of temperature, vegetation health, and moisture. When a forecasted composite value falls within a crop's acceptable range, that crop is flagged as suitable for the projected conditions.
 
 These thresholds are grounded in decades of agronomic research and are the same standards used by international development and food security bodies when assessing agricultural potential. Extending the system to additional crops requires only adding their threshold profiles to `models.py`.
 
@@ -173,14 +181,15 @@ These thresholds are grounded in decades of agronomic research and are the same 
 
 ## Suggested Starting Points
 
-| Your goal                              | Where to start                                  |
-| -------------------------------------- | ----------------------------------------------- |
+| Your goal | Where to start |
+|---|---|
 | Understand the problem and methodology | `Report/` → `malawi_pipeline_walkthrough.ipynb` |
-| Get a quick overview                   | `PowerPoint/`                                   |
-| Run the app                            | `Flask_Application_and_Notebook/` → `app.py`    |
-| Rerun the data pipeline                | `Notebooks/` in order (steps 1–4)               |
-| Extend to new crops or regions         | `Flask_Application_and_Notebook/models.py`      |
+| Get a quick overview | `PowerPoint/` |
+| Run the app | `Flask_Application_and_Notebook/` → `app.py` |
+| Rerun the data pipeline | `Notebooks/` in order (steps 1-4) |
+| Extend to new crops or regions | `Flask_Application_and_Notebook/models.py` |
+| Verify research ethics credentials | `Approvals/` |
 
 ---
 
-_This project was developed as an applied research contribution to data-driven agricultural decision support in Malawi._
+*This project was developed as an applied research contribution to data-driven agricultural decision support in Malawi.*
